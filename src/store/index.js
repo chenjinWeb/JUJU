@@ -8,7 +8,6 @@ Vue.use(Vuex);
 
 import mutations from "./mutations"
 import global from "./modules/global"
-import indexModule from "./modules/indexModule";
 
 const state={
 
@@ -23,8 +22,7 @@ const store = new Vuex.Store({
   getters,
   mutations,
   modules:{
-    $global: global,
-    $indexModule: indexModule
+    $global: global
   }
 })
 

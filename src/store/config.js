@@ -3,4 +3,4 @@
  */
 
 
-export const baseUrl="https://admin.lcinc.cn/api"
+export const baseUrl="http://47.100.119.134/"

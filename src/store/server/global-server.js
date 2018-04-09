@@ -5,14 +5,11 @@
 import http from "../http"
 import {toBodyString} from "../../utils"
 
-export const userlogin = (body = {}) => {
-
+export const getWordsTest = (body = {}) => {
+  let query = toBodyString(body);
+  return http.get(`Test/getWordsTest?${query}`)
 };
 
-export const getUserInfo = (body={})=>{
-  let query = toBodyString(body);
-  return http.get(`/user/info?${query}`)
-}
 
 
 

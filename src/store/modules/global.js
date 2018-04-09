@@ -3,7 +3,7 @@
  */
 
 import {
-  userlogin
+  getWordsTest
 } from "../server/global-server"
 
 const state={
@@ -15,7 +15,9 @@ const getters={
 }
 
 const actions = {
-
+  async getWordsTest_({commit,state},body={}){
+    return await getWordsTest(body)
+  }
 }
 
 

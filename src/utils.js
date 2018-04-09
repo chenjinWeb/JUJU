@@ -1,6 +1,14 @@
 /**
  * Created by admin on 2018/3/28.
  */
+
+const toQueryPair = function (key, value) {
+  if (typeof value === 'undefined') {
+    return key;
+  }
+  return key + '=' + encodeURIComponent(value === null ? '' : String(value));
+}
+
 const toBodyString = function (obj) {
   let ret = [];
   for (let key in obj) {
@@ -20,5 +28,6 @@ const toBodyString = function (obj) {
 }
 
 export {
-  toBodyString
+  toBodyString,
+  toQueryPair
 }

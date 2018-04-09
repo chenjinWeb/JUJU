@@ -47,20 +47,20 @@ instance.interceptors.request.use(function (config) {
 instance.interceptors.response.use(function (response) {
   Indicator.list.pop();
   Indicator.list.length === 0 && Indicator.close();
-  if (response.status == 200 && response.data.success == 200) {
+  if (response.status == 200 && response.data.result == 200) {
     return response.data;
   }
   //弹幕提示用户
-  if (response.data.success == 500) {
+  if (response.data.result == 500) {
     Toast(response.data.message);
   }
   //没有登录 转向登录页面
-  if (response.data.success == 401){
+  if (response.data.result == 401){
     router.replace({name: 'login'});
     return Promise.reject('请重新登录');
   }
   //没有登录 转向登录页面
-  if (response.data.success == 301){
+  if (response.data.result == 301){
     MessageBox.alert(`${response.data.message}`)
     return
   }
