@@ -3,7 +3,7 @@
 
       <div class="word_number">
           <p>单选题</p>
-        <span>{{number}}/{{length}}</span>
+          <span>{{number}}/{{length}}</span>
       </div>
 
       <div v-for="(l,index) in lists" v-if="number==(index+1)">
@@ -12,10 +12,10 @@
         </div>
 
         <div class="word_answer">
-          <div class="word_answer_item" v-for="(s,indexes) in l.select" @click="getAnswer(index,s.id)">
+          <div class="word_answer_item" v-for="(s,indexes) in l.select" @click="getAnswer(index,s,l.select)">
             <em>{{indexes==0? 'A': indexes==1? "B" : indexes==2? "C" : "D"}}</em>
             <span>{{s.mean}}</span>
-            <i></i>
+            <i v-if="s.checked"></i>
           </div>
         </div>
       </div>
@@ -37,7 +37,8 @@
                 lists:[],
                 number:1,
                 length:0,
-                answer:[]
+                answer:[],
+                level:this.$route.query.level
             }
         },
         computed: {},
@@ -46,17 +47,25 @@
               "getWordsTest_"
           ]),
           getLists(){
-            this.getWordsTest_({level:1}).then((res)=>{
+            this.getWordsTest_({level:this.level}).then((res)=>{
                 if(res.result==200){
+                  res.data.forEach((item)=>{
+                    item.select.forEach((itemes)=>{
+                      itemes.checked=false;
+                    })
+                  })
                   this.lists = res.data;
                   this.length = res.data.length;
                 }
             })
           },
           //点击答案
-          getAnswer(index,id){
-              this.answer[index] = id;
-              console.info(this.answer)
+          getAnswer(index,item,parentItem){
+            this.answer[index] = item.id;
+            parentItem.forEach((itemed)=>{
+              itemed.checked=false;
+            })
+            item.checked=true;
           },
           //下一题
           nextItem(){
@@ -75,7 +84,8 @@
 </script>
 <style>
   .word{ background: url("../assets/img/word_bg.png") 100%; background-size: cover; width: 100%; height: 100%; padding-top: 0.4rem;}
-  .word_number{ width: 0.8rem; height: 0.8rem; border-radius: 50%; border: 2px solid #501318; background: #fff; position: absolute; margin: 0 auto; top: -0.4rem; left: 50%; margin-left: -0.4rem; color: #4f1416; padding-top: 0.4rem;}
+  .word_number{ width: 0.9rem; height: 0.9rem; border-radius: 50%; border: 2px solid #501318; background: #fff; position: absolute; margin: 0 auto; top: -0.45rem; left: 50%; margin-left: -0.45rem; color: #4f1416; padding-top: 0.45rem;}
+  .word_number span{  font-size: 0.12rem;}
   .word_text{ background: url("../assets/img/text_bg.png") no-repeat center; background-size: contain; width: 100%; height: 2.2rem; position: relative;}
   .word_text span{ position: absolute;top: 1.35rem; left: 0.45rem; font-size: 0.14rem; max-width: 70%; text-align: left;}
   .word_answer{ margin-top: 0.2rem;}

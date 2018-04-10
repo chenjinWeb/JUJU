@@ -9,21 +9,35 @@
       <div class="index_btn">
         <img src="../assets/img/listen.png" width="200"/>
       </div>
+
+      <van-picker :columns="columns" v-show="show" show-toolbar title="请选择课程等级" @cancel="onCancel" @confirm="onConfirm" />
+
     </div>
 </template>
 
 <script>
+  import Vue from "vue"
+  import { Picker } from 'vant';
+  import {Toast} from "mint-ui"
+  Vue.use(Picker);
     export default {
         name: '',
         data () {
             return {
-                msg: ''
+              columns: ['1', '2', '3', '4', '5'],
+              show:false
             }
         },
         computed: {},
         methods: {
+          onConfirm(value, index){
+            this.$router.push({name:"word",query:{level:value}})
+          },
+          onCancel(){
+            this.show=false;
+          },
           goPage(){
-              this.$router.push({name:"word"})
+            this.show=true;
           }
         },
         props: []
