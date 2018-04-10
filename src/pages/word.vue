@@ -20,14 +20,79 @@
         </div>
       </div>
 
-      <div class="word_next">
+      <div class="word_next" v-if="number != length">
         <div class="word_next_btn" @click="nextItem()"></div>
+      </div>
+
+      <div class="word_next" v-if="number == length">
+        <div class="word_commit_btn" @click="commitData()"></div>
       </div>
 
     </div>
 </template>
 
 <script>
+
+
+
+const data = [
+  {
+    id:1,
+    select:[
+        {id: 1, mean: "沿着", true: false,checked:false},
+        {id: 2, mean: "在…之间", true: false,checked:false},
+        {id: 3, mean: "在…之间", true: false,checked:false},
+        {id: 4, mean: "在…之间", true: false,checked:false}
+      ],
+    word:"alone1"
+  },
+  {
+    id:1,
+    select:[
+      {id: 5, mean: "沿着", true: false,checked:false},
+      {id: 6, mean: "在…之间", true: false,checked:false},
+      {id: 7, mean: "在…之间", true: false,checked:false},
+      {id: 8, mean: "在…之间", true: false,checked:false}
+    ],
+    word:"alone2"
+  },
+  {
+    id:1,
+    select:[
+      {id: 9, mean: "沿着", true: false,checked:false},
+      {id: 10, mean: "在…之间", true: false,checked:false},
+      {id: 11, mean: "在…之间", true: false,checked:false},
+      {id: 12, mean: "在…之间", true: false,checked:false}
+    ],
+    word:"alone3"
+  },
+  {
+    id:1,
+    select:[
+      {id: 13, mean: "沿着", true: false,checked:false},
+      {id: 14, mean: "在…之间", true: false,checked:false},
+      {id: 15, mean: "在…之间", true: false,checked:false},
+      {id: 16, mean: "在…之间", true: false,checked:false}
+    ],
+    word:"alone4"
+  },
+  {
+    id:1,
+    select:[
+      {id: 17, mean: "沿着", true: false,checked:false},
+      {id: 18, mean: "在…之间", true: false,checked:false},
+      {id: 19, mean: "在…之间", true: false,checked:false},
+      {id: 20, mean: "在…之间", true: false,checked:false}
+    ],
+    word:"alone5"
+  }
+]
+
+
+
+
+
+
   import {mapActions} from "vuex"
   import {Toast} from "mint-ui"
     export default {
@@ -44,7 +109,8 @@
         computed: {},
         methods: {
           ...mapActions([
-              "getWordsTest_"
+              "getWordsTest_",
+              "commitData_"
           ]),
           getLists(){
             this.getWordsTest_({level:this.level}).then((res)=>{
@@ -54,8 +120,10 @@
                       itemes.checked=false;
                     })
                   })
-                  this.lists = res.data;
-                  this.length = res.data.length;
+                  //this.lists = res.data;
+                  this.lists = data;
+                  //this.length = res.data.length;
+                  this.length = data.length;
                 }
             })
           },
@@ -70,10 +138,23 @@
           //下一题
           nextItem(){
               if(this.number != this.answer.length){
-                  Toast("请选择答案")
-                  return
+                Toast("请选择答案")
+                return
               }
               this.number++
+          },
+          //提交答案
+          commitData(){
+              let body={
+                  level:this.level,
+                  data:this.answer
+              }
+
+              console.info(body)
+
+              this.commitData_(body).then((res)=>{
+                  console.info(res)
+              })
           }
         },
         props: [],
@@ -96,5 +177,6 @@
   .word_answer_item i{ position: absolute; line-height: 0.45rem; color: #000; font-size: 0.16rem; right: 0.41rem; top: 0.05rem; background: url("../assets/img/right.png") no-repeat; background-size: contain; width: 0.4rem; height: 0.4rem;}
   .word_next{ text-align: center; margin-top: 0.4rem;}
   .word_next .word_next_btn{ background: url("../assets/img/btn.png") no-repeat; width: 1.5rem; height: 0.6rem; background-size: contain; margin: 0 auto;}
+  .word_commit_btn{ background: url("../assets/img/commit.png") no-repeat; width: 1.5rem; height: 0.6rem; background-size: contain; margin: 0 auto;}
 
 </style>

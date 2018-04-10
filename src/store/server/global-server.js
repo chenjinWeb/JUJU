@@ -10,6 +10,10 @@ export const getWordsTest = (body = {}) => {
   return http.get(`Test/getWordsTest?${query}`)
 };
 
+export const commitData=(body={})=>{
+  console.info(body)
+  return http.post(`/Test/getWordsTestResult`, body, {headers: {"Content-Type": "application/json"}});
+}
 
 
 
