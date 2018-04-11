@@ -11,8 +11,8 @@ export const getWordsTest = (body = {}) => {
 };
 
 export const commitData=(body={})=>{
-  console.info(body)
-  return http.post(`/Test/getWordsTestResult`, body, {headers: {"Content-Type": "application/json"}});
+  let query = toBodyString(body);
+  return http.post(`/Test/getWordsTestResult`, query, {headers: {"Content-Type": "application/x-www-form-urlencoded;charset=utf-8"}});
 }
 
 

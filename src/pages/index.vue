@@ -45,7 +45,7 @@
 </script>
 <style scoped>
 
-  .index_bg{  background: url("../assets/img/index_bg.png") 100%; background-size: cover; width: 100%; height: 100%; padding-top: 1.0rem;}
-  .index_btn{ margin-top: 0.8rem;}
+  .index_bg{  background: url("../assets/img/index_bg.png") 100% 100% no-repeat; background-size: cover; width: 100%; height: 100%; padding-top: 1.0rem;}
+  .index_btn{ margin-top: 0.4rem;}
 
 </style>
