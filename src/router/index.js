@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Index from "../pages/index.vue"
 import Word from "../pages/word.vue"
+import Mine from "../pages/mine.vue"
+import List from "../pages/list.vue"
 
 Vue.use(Router)
 
@@ -20,6 +22,25 @@ const word=[
     component:Word
   }
 ]
+const mine=[
+  {
+    path:"/mine",
+    name:'mine',
+    component:Mine,
+    children:[
+
+    ]
+  },
+  {
+    path:'/list',
+    name:'list',
+    component:List
+  }
+]
+
+
+
+
 
 const routes = [
   {
@@ -33,7 +54,8 @@ const routes = [
     component:Index
   },
   ...index,
-  ...word
+  ...word,
+  ...mine
 ]
 
 

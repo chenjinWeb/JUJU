@@ -14,6 +14,12 @@ import 'mint-ui/lib/style.css'
 import Vant from "vant"
 import 'vant/lib/vant-css/index.css';
 Vue.use(Vant);
+import 'element-ui/lib/theme-chalk/index.css'
+import ElementUI from "element-ui"
+Vue.use(ElementUI);
+
+import component from './component';
+component(Vue);
 
 /* eslint-disable no-new */
 new Vue({

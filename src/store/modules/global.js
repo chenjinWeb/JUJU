@@ -4,7 +4,7 @@
 
 import {
   commitData,
-  getWordsTest
+  getWordsTest, projectlist
 } from "../server/global-server"
 
 const state={
@@ -22,6 +22,10 @@ const actions = {
 
   async commitData_({commit,state},body){
     return await commitData(body)
+  },
+
+  async projectlist_({commit,state},body){
+    return await projectlist(body)
   }
 }
 
