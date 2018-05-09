@@ -14,6 +14,7 @@ export default {
   @import "./assets/css/base.css";
   @import "./assets/css/master.css";
   @import "./assets/css/animate.css";
+  @import "./assets/css/button.css";
   #app{
     height: 100%;
     width: 100%;

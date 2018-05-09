@@ -20,5 +20,10 @@ export const projectlist = (body={})=>{
   return http.get(`/data/getCourseInfo?${query}`)
 }
 
+export const courselist = (body={})=>{
+  let query = toBodyString(body);
+  return http.get(`/data/getCourse?${query}`)
+}
+
 
 
