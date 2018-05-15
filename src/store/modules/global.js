@@ -4,7 +4,7 @@
 
 import {
   commitData, courselist,
-  getWordsTest, projectlist
+  getWordsTest, listInfo, projectlist
 } from "../server/global-server"
 
 const state={
@@ -30,6 +30,10 @@ const actions = {
 
   async courselist_({commit,state},body){
     return await courselist(body)
+  },
+
+  async listInfo_({commit,state},body){
+    return await listInfo(body)
   }
 
 }

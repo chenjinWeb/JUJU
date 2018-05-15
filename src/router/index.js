@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Index from "../pages/index.vue"
 import Word from "../pages/word.vue"
 import Mine from "../pages/mine.vue"
+import videolist from "../pages/videolist.vue"
 import List from "../pages/list.vue"
 import Type from "../pages/type.vue"
 
@@ -29,7 +30,11 @@ const mine=[
     name:'mine',
     component:Mine,
     children:[
-
+      {
+        name:'videolist',
+        path:'videolist',
+        component:videolist
+      }
     ]
   },
   {

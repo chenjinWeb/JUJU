@@ -19,7 +19,7 @@
               </div>
 
               <div style="flex: 3; text-align: left; margin-left: 0.1rem; position: relative;">
-                <div style=" font-size: 0.14rem;">{{p.name}}</div>
+                <div style=" font-size: 0.14rem;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;">{{p.name}}</div>
                 <div style=" position: absolute; bottom: 0; font-size: 0.14rem; color: red;">￥{{p.price}}</div>
               </div>
 

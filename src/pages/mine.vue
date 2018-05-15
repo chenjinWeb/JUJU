@@ -18,19 +18,19 @@
             <div class="price">课程</div>
           </button>-->
 
-          <div style="position: relative; width: 2.0rem; height: 0.6rem; border-radius: 0.6rem; margin: 0 auto;  margin-top: 0.5rem; border: 1px solid #e5e5e5;">
+          <div class="mine" @click="goPage(1)">
 
-            <div style="width: 1.0rem; text-align: center; line-height: 0.6rem; font-size: 0.18rem; color: #333; border-radius: 0.6rem; height: 100%; border-right: 1px solid #e5e5e5;">直播</div>
-            <div style="position: absolute; height: 100%; width: 1.0rem; left: 1.0rem; top: 0; font-size: 0.14rem; display: flex; justify-content: center; flex-direction: column;">
+            <div class="mine_list">直播</div>
+            <div class="mine_menu">
               <p>少儿发育</p>
               <p>每周一到五</p>
             </div>
 
           </div>
 
-          <div style="position: relative; width: 2.0rem; height: 0.6rem; border-radius: 0.6rem; margin: 0 auto;  margin-top: 0.5rem; border: 1px solid #e5e5e5;">
-            <div style="width: 1.0rem; text-align: center; line-height: 0.6rem; font-size: 0.18rem; color: #333; border-radius: 0.6rem; height: 100%; border-right: 1px solid #e5e5e5;">课程</div>
-            <div style="position: absolute; height: 100%; width: 1.0rem; left: 1.0rem; top: 0; font-size: 0.14rem; display: flex; justify-content: center; flex-direction: column;">
+          <div class="mine" @click="goPage(2)">
+            <div class="mine_list">课程</div>
+            <div class="mine_menu">
               <p>老外教书</p>
               <p>共30节</p>
             </div>
@@ -59,6 +59,9 @@
         methods: {
           goback(){
               this.$router.push({name:'mine'})
+          },
+          goPage(id){
+            this.$router.push({name:'videolist',query:{id:id}})
           }
         }
     }
