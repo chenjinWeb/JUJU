@@ -2,6 +2,8 @@
 import http from "./store/http"
 import {baseUrl} from './store/config'
 import {toBodyString} from "./utils"
+import wx from "weixin-js-sdk"
+
 
 
 const wxApi = {

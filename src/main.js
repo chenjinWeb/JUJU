@@ -21,6 +21,8 @@ Vue.use(ElementUI);
 import component from './component';
 component(Vue);
 
+import wx from "weixin-js-sdk"
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
