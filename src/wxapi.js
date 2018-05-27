@@ -4,8 +4,6 @@ import {baseUrl} from './store/config'
 import {toBodyString} from "./utils"
 import wx from "weixin-js-sdk"
 
-
-
 const wxApi = {
 
   //判断是否是微信浏览器
@@ -53,15 +51,6 @@ const wxApi = {
 
   },
 
-  maxArr(arr){
-    var maxNum = arr[0];
-    for(let i =0;i<arr.length;i++){
-      if(maxNum<arr[i]){
-        maxNum = arr[i]
-      }
-    }
-    return maxNum
-  }
 
 
 

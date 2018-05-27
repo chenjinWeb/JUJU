@@ -21,6 +21,11 @@ Vue.use(ElementUI);
 import component from './component';
 component(Vue);
 
+import 'vue-video-player/src/custom-theme.css';
+import 'video.js/dist/video-js.css'
+import VideoPlayer from 'vue-video-player';
+Vue.use(VideoPlayer)
+
 import wx from "weixin-js-sdk"
 
 /* eslint-disable no-new */

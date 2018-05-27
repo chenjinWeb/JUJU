@@ -3,8 +3,9 @@
  */
 
 import {
-  commitData, courselist, getorders,
-  getWordsTest, listInfo, projectlist
+  bycourse,
+  commitData, courselist, getmycourse, getorders, getshareinfo,
+  getWordsTest, listInfo, projectlist, userinfo
 } from "../server/global-server"
 
 const state={
@@ -38,7 +39,25 @@ const actions = {
 
   async listInfo_({commit,state},body){
     return await listInfo(body)
-  }
+  },
+
+  async bycourse_({commit,state},body){
+    return await bycourse(body)
+  },
+
+  async userinfo_({commit,state},body){
+    return await userinfo(body)
+  },
+
+  async getmycourse_({commit,state},body){
+    return await getmycourse(body)
+  },
+
+  async getshareinfo_({commit,state},body){
+    return await getshareinfo(body)
+  },
+
+
 
 }
 

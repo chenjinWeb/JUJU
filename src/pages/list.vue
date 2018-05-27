@@ -52,8 +52,6 @@
 
   import {Toast} from "mint-ui"
 
-  import weixinpay  from "../weixinpay"
-
     export default {
       name: 'list',
         data () {
@@ -72,7 +70,8 @@
         methods: {
           ...mapActions([
               'projectlist_',
-              'getorders_'
+              'getorders_',
+              'bycourse_'
           ]),
           //点击是否选中
           checkMoney(){
@@ -95,6 +94,7 @@
             })
           },
           getpayorder(){
+
             if(this.total<=0){
               Toast('支付金额不能小于0元!')
                 return
@@ -129,11 +129,11 @@
                 package: packages, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=***）
                 signType: 'MD5', // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
                 paySign: paySign, // 支付签名
-                success: function(res) {
+                success: (res)=>{
                   // 支付成功后的回调函数
                   cb(res);
                 },
-                fail:function(res){
+                fail:(res)=>{
                   errorCb(res);
                 }
               });
@@ -147,7 +147,20 @@
 
           paymoney(){
             this.weixinpay(this.userInfo,(success)=>{
-              //alert(success)
+              const result = [];
+              this.projectLists.forEach(item =>{
+                if(item.checked){
+                  result.push(item.id)
+                }
+              })
+              this.bycourse_(
+                {
+                  firstId:this.id,
+                  secondIds:result.join(",")
+                }
+              ).then(()=>{
+                this.$router.push({name:'mine'});
+              })
             },(err)=>{
               //alert(err)
             })

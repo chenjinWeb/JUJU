@@ -4,6 +4,8 @@ import Index from "../pages/index.vue"
 import Word from "../pages/word.vue"
 import Mine from "../pages/mine.vue"
 import videolist from "../pages/videolist.vue"
+import video from "../pages/video.vue"
+import user from "../pages/user.vue"
 import List from "../pages/list.vue"
 import Type from "../pages/type.vue"
 
@@ -33,7 +35,19 @@ const mine=[
       {
         name:'videolist',
         path:'videolist',
-        component:videolist
+        component:videolist,
+        children:[
+          {
+            name:'video',
+            path:'video',
+            component:video
+          }
+        ]
+      },
+      {
+        name:'user',
+        path:'user',
+        component:user
       }
     ]
   },

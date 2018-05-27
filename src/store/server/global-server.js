@@ -35,5 +35,22 @@ export const listInfo = (body={})=>{
   return http.get(`/data/getCourseInfoList?${query}`)
 }
 
+export const bycourse=(body={})=>{
+  let query = toBodyString(body);
+  return http.post(`/data/byCourse`, query, {headers: {"Content-Type": "application/x-www-form-urlencoded;charset=utf-8"}});
+};
+
+export const userinfo = ()=>{
+  return http.get(`/getUser`)
+}
+
+export const getmycourse = ()=>{
+  return http.get(`/data/getMyCourse`)
+}
+
+export const getshareinfo = (body={})=>{
+  const query = toBodyString(body)
+  return http.get(`/pay/getShareInfo?${query}`)
+}
 
 
